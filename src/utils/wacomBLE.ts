@@ -1,5 +1,8 @@
 import type { TabletBackendCapabilities } from '@/types/memory';
 
+// Parts of the Wacom SmartPad protocol handling here were informed by the tuhi project:
+// https://github.com/tuhiproject/tuhi
+
 const NORDIC_UART_SERVICE_UUID = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 const NORDIC_UART_CHRC_TX_UUID = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 const NORDIC_UART_CHRC_RX_UUID = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';

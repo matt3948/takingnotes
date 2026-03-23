@@ -1054,16 +1054,25 @@ function InfoRow({ label, value }: { label: string; value: string }) {
   );
 }
 
+const WACOM_ORIENTATION_OPTIONS: Array<{ value: WacomLiveOrientation; label: string }> = [
+  { value: 'portrait', label: 'Portrait' },
+  { value: 'landscape', label: 'Landscape' },
+  { value: 'reverse-portrait', label: 'Rotated Portrait' },
+  { value: 'reverse-landscape', label: 'Rotated Landscape' },
+];
+
 function formatWacomOrientationLabel(orientation: WacomLiveOrientation) {
   switch (orientation) {
     case 'portrait':
+      return 'Portrait';
+    case 'landscape':
       return 'Landscape';
     case 'reverse-portrait':
-      return 'Rotated Landscape';
-    case 'reverse-landscape':
       return 'Rotated Portrait';
+    case 'reverse-landscape':
+      return 'Rotated Landscape';
     default:
-      return 'Portrait';
+      return 'Landscape';
   }
 }
 
@@ -1101,16 +1110,9 @@ function OrientationToggle({
   value: WacomLiveOrientation;
   onChange: (value: WacomLiveOrientation) => void;
 }) {
-  const options: Array<{ value: WacomLiveOrientation; label: string }> = [
-    { value: 'portrait', label: 'Landscape' },
-    { value: 'landscape', label: 'Portrait' },
-    { value: 'reverse-portrait', label: 'Rotated Landscape' },
-    { value: 'reverse-landscape', label: 'Rotated Portrait' },
-  ];
-
   return (
     <div className="grid grid-cols-2 gap-2">
-      {options.map((option) => (
+      {WACOM_ORIENTATION_OPTIONS.map((option) => (
         <PSButton key={option.value} onClick={() => onChange(option.value)} active={value === option.value}>
           <span className={value === option.value ? 'text-blue-300' : 'text-neutral-300'}>{option.label}</span>
         </PSButton>
