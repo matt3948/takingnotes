@@ -734,7 +734,7 @@ export class WacomSmartPadBLE implements TabletBackendCapabilities {
       this.setStatus('Scanning...');
       this.log('Requesting Wacom/tUHI device...');
       this.device = await navigator.bluetooth.requestDevice({
-        filters: [{ namePrefix: 'Bamboo' }, { namePrefix: 'Wacom' }],
+        filters: [{ namePrefix: 'Bamboo' }, { namePrefix: 'Wacom' }, {namePrefix: 'Apple'}],
         optionalServices: [
           NORDIC_UART_SERVICE_UUID,
           WACOM_LIVE_SERVICE_UUID,
